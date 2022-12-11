@@ -1,8 +1,7 @@
 import processing.core.PApplet;
 
-public class Main extends PApplet 
-{
-	public static void main(String[] args) {
-		PApplet.main("app.Application");
-	}
+public class Main extends PApplet {
+  public static void main(String[] args) {
+    PApplet.main("app.inheritance.InheritanceApplication");
+  }
 }
