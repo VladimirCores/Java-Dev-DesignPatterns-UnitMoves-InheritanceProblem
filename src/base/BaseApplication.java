@@ -8,6 +8,7 @@ import hype.H;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class BaseApplication extends PApplet {
@@ -19,7 +20,7 @@ public class BaseApplication extends PApplet {
   int milliseconds = 0;
   int deltaTime = 0;
   int lastTime = 0;
-  protected final ArrayList<Unit> _units = new ArrayList<>();
+  protected final ArrayList<BaseUnit> _units = new ArrayList<>();
   private Controller<?> _unitGUI;
   protected CallbackListener _guiController;
 
@@ -44,17 +45,20 @@ public class BaseApplication extends PApplet {
     int clickX = event.getX();
     int clickY = event.getY();
 
-    Unit unit = FindClosesUnitAtPosition(clickX, clickY, SIZE);
+    Unit unit = (Unit) FindClosesUnitAtPosition(clickX, clickY, SIZE);
     boolean isUnitFound = unit != null;
 
     if (isUnitFound) SelectUnit(unit);
-    else _selectedUnit.move(clickX, clickY);
+    else if (_selectedUnit != null) {
+      _selectedUnit.move(clickX, clickY);
+    }
   }
 
-  private Unit FindClosesUnitAtPosition(int clickX, int clickY, int closestDistance) {
-    Unit foundUnit = null;
-    for (Unit unit : _units) {
-      int hypo = (int) Math.hypot(clickX - unit.x, clickY - unit.y);
+  private BaseUnit FindClosesUnitAtPosition(int clickX, int clickY, int closestDistance) {
+    BaseUnit foundUnit = null;
+    for (BaseUnit unit : _units) {
+      Point position = unit.getPosition();
+      int hypo = (int) Math.hypot(clickX - position.x, clickY - position.y);
       boolean isClickedOnUnit = hypo < unit.getRadius();
       boolean isClickedCloser = hypo < closestDistance;
       if (isClickedOnUnit && isClickedCloser) {

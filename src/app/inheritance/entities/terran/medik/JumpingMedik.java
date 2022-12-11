@@ -43,8 +43,10 @@ public class JumpingMedik extends Medik {
         radius = _originalRadius;
         _jumping = false;
       } else if (radius < 0) {
-        this.x = _jumpDestinationPosition.x;
-        this.y = _jumpDestinationPosition.y;
+        position.setLocation(
+          _jumpDestinationPosition.x,
+          _jumpDestinationPosition.y
+        );
         _jumpDestinationPosition = null;
         radius = 0;
       }

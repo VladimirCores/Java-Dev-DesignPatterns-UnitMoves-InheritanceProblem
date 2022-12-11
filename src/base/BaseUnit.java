@@ -2,18 +2,16 @@ package base;
 
 import controlP5.Controller;
 import controlP5.DropdownList;
-import hype.H;
 import interfaces.unit.IUnit;
 import processing.core.PApplet;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class BaseUnit implements IUnit {
   public final static float DEFAULT_SIZE = 25f;
 
   static public final String GUI_NAME = "Unit Modes";
-  public float x, y;
+  public Point position = new Point(0, 0);
   protected PApplet _canvas;
   protected DropdownList _gui;
   protected int _originalColor;
@@ -29,13 +27,10 @@ public class BaseUnit implements IUnit {
 
   public BaseUnit(PApplet canvas, Point position) {
     this(canvas);
-    this.x = position.x;
-    this.y = position.y;
+    this.position = position;
   }
 
-  public void init() {
-    setColor(_originalColor);
-  }
+  public void init() {}
 
   protected void SetupUnit() { }
 
@@ -46,14 +41,14 @@ public class BaseUnit implements IUnit {
         _canvas.strokeWeight(_strokeSize);
       }
       _canvas.fill(_color);
-      _canvas.ellipse(x, y, _radius, _radius);
+      _canvas.ellipse(position.x, position.y, _radius, _radius);
     }
   }
 
   public void update(int deltaTime) {}
 
   public Point getPosition() {
-    return new Point((int) this.x, (int) this.y);
+    return position;
   }
 
   protected void setColor(int color) {
@@ -78,7 +73,7 @@ public class BaseUnit implements IUnit {
     return _radius;
   }
 
-  protected void setRadius(float radius) {
+  public void setRadius(float radius) {
     _radius = radius;
   }
 

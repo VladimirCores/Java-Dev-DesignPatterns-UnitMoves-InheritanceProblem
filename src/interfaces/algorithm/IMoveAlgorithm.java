@@ -1,5 +1,7 @@
 package interfaces.algorithm;
 
+import interfaces.unit.IUnit;
+
 public interface IMoveAlgorithm {
-  void move(int x, int y);
+  void move(IUnit unit, int x, int y);
 }

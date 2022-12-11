@@ -2,6 +2,7 @@ package interfaces.unit;
 
 import interfaces.algorithm.IMoveAlgorithm;
 
-public interface IUnitComposed extends IUnit, IMoveAlgorithm {
+public interface IUnitComposable {
   void setMoveAlgorithm(IMoveAlgorithm algorithm);
+  String getGUIName();
 }

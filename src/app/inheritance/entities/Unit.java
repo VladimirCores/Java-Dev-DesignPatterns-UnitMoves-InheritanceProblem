@@ -1,10 +1,9 @@
 package app.inheritance.entities;
 
 import base.BaseUnit;
-import interfaces.unit.IUnit;
+import consts.Defaults;
 import controlP5.ControlP5;
 import controlP5.Controller;
-import controlP5.DropdownList;
 import de.looksgood.ani.Ani;
 import hype.H;
 import processing.core.PApplet;
@@ -24,45 +23,37 @@ public class Unit extends BaseUnit {
     super(canvas);
     SetupUnit();
   }
+  public Unit(PApplet canvas, Point position) {
+    super(canvas, position);
+    SetupUnit();
+  }
   @Override
   protected void SetupUnit() {
     _originalColor = H.WHITE;
     _strokeColor = _canvas.color(200, 0, 200);
     _strokeSize = 2;
-    _speed = 200;
+    _speed = Defaults.SPEED_WALK;
     setRadius(DEFAULT_SIZE);
-  }
-
-  public Unit(PApplet canvas, Point position) {
-    this(canvas);
-    this.x = position.x;
-    this.y = position.y;
   }
 
   public void init() {
     setColor(_originalColor);
-    int offsetX = (int) (_canvas.width * 0.3);
-    int offsetY = (int) (_canvas.height * 0.3);
-    x = offsetX + (float) ((_canvas.width - offsetX * 2) * Math.random());
-    y = offsetY + (float) ((_canvas.height - offsetY * 2) * Math.random());
-  }
-
-  public Point getPosition() {
-    return new Point((int) this.x, (int) this.y);
+    int offsetX = (int) (_canvas.width * 0.2);
+    int offsetY = (int) (_canvas.height * 0.2);
+    position.setLocation(
+        offsetX + (float) ((_canvas.width - offsetX * 2) * Math.random()),
+        offsetY + (float) ((_canvas.height - offsetY * 2) * Math.random())
+    );
   }
 
   public void move(int toX, int toY) {
-    float distance = (float) Math.abs(Point.distance(this.x, this.y, toX, toY));
+    float distance = (float) Math.abs(Point.distance(position.x, position.y, toX, toY));
     float time = distance / _speed;
 
     if (time < 0.1) time = 0.1f;
 
-    Ani.to(this, time, "y", toY, Ani.LINEAR);
-    Ani.to(this, time, "x", toX, Ani.LINEAR);
-  }
-
-  public void changeSpeed(int value) {
-    _speed = value;
+    Ani.to(position, time, "y", toY, Ani.LINEAR);
+    Ani.to(position, time, "x", toX, Ani.LINEAR);
   }
 
   @Override

@@ -1,6 +1,7 @@
 package app.inheritance.entities.terran.marine;
 
 import app.inheritance.entities.terran.Marine;
+import consts.Defaults;
 import controlP5.ControlP5;
 import controlP5.Controller;
 import hype.H;
@@ -27,7 +28,7 @@ public class RunningMarine extends Marine {
   @Override
   protected void SetupUnit() {
     super.SetupUnit();
-    _speed = 600;
+    _speed = Defaults.SPEED_RUN;
     _strokeColor = H.CYAN;
     _strokeSize = 2;
   }

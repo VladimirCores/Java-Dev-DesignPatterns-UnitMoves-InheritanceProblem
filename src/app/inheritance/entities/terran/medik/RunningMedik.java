@@ -1,6 +1,7 @@
 package app.inheritance.entities.terran.medik;
 
 import app.inheritance.entities.terran.Medik;
+import consts.Defaults;
 import controlP5.ControlP5;
 import controlP5.Controller;
 import hype.H;
@@ -27,7 +28,7 @@ public class RunningMedik extends Medik {
   @Override
   protected void SetupUnit() {
     super.SetupUnit();
-    _speed = 600;
+    _speed = Defaults.SPEED_RUN;
     _strokeColor = H.MAGENTA;
     _strokeSize = 2;
   }

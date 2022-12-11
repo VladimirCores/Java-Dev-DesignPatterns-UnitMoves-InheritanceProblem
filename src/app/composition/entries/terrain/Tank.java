@@ -1,5 +1,6 @@
 package app.composition.entries.terrain;
 
+import app.composition.entries.UnitComposed;
 import app.inheritance.entities.Unit;
 import controlP5.ControlP5;
 import controlP5.Controller;
@@ -9,11 +10,15 @@ import processing.core.PApplet;
 import java.awt.*;
 import java.util.Arrays;
 
-public class Tank extends Unit {
+public class Tank extends UnitComposed {
   static public final String GUI_NAME = "Tank Modes:";
 
   public Tank(PApplet canvas, Point position) {
     super(canvas, position);
+  }
+
+  public String getGUIName() {
+    return Tank.GUI_NAME;
   }
 
   protected void SetupUnit() {
@@ -32,6 +37,7 @@ public class Tank extends Unit {
   }
 
   public enum UNIT_TYPES {
+    WALK,
     TURELL,
     _BACK
   }

@@ -3,6 +3,8 @@ package app.inheritance;
 import app.inheritance.controllers.InheritanceGUIController;
 import app.inheritance.entities.Unit;
 import base.BaseApplication;
+import base.BaseUnit;
+import interfaces.algorithm.IMoveAlgorithm;
 import interfaces.unit.IUnitProcessor;
 import processing.core.PApplet;
 
@@ -25,7 +27,7 @@ public class InheritanceApplication extends BaseApplication implements IUnitProc
     _units.add(new Unit(this));
     _units.add(new Unit(this));
     _units.add(new Unit(this));
-    _units.forEach(Unit::init);
+    _units.forEach(BaseUnit::init);
   }
 
   @Override
@@ -51,5 +53,10 @@ public class InheritanceApplication extends BaseApplication implements IUnitProc
     _units.remove(originalUnit);
     originalUnit.distroy();
     _isNewUnitCreated = true;
+  }
+
+  @Override
+  public void changeUnitMoveAlgorithm(IMoveAlgorithm algorithm) {
+
   }
 }

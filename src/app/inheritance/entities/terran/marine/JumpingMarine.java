@@ -43,8 +43,7 @@ public class JumpingMarine extends Marine {
         radius = _originalRadius;
         _jumping = false;
       } else if (radius < 0) {
-        this.x = _jumpDestinationPosition.x;
-        this.y = _jumpDestinationPosition.y;
+        this.position.setLocation(_jumpDestinationPosition);
         _jumpDestinationPosition = null;
         radius = 0;
       }
