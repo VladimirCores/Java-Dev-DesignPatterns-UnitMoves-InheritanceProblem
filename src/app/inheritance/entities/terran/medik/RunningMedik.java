@@ -10,7 +10,7 @@ import processing.core.PApplet;
 import java.awt.*;
 
 public class RunningMedik extends Medik {
-  static public final String GUI_NAME = "RunningMedik Mode:";
+  static public final String GUI_NAME = "Running Medik Mode:";
 
   public RunningMedik(PApplet canvas) {
     super(canvas);

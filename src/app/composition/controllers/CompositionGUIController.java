@@ -9,7 +9,6 @@ import app.composition.entries.terrain.Marine;
 import app.composition.entries.terrain.Medik;
 import app.composition.entries.terrain.Tank;
 import app.inheritance.entities.Unit;
-import app.inheritance.entities.terran.tank.TurellTank;
 import controlP5.CallbackEvent;
 import controlP5.CallbackListener;
 import controlP5.Controller;
@@ -55,19 +54,20 @@ public class CompositionGUIController implements CallbackListener {
   @Override
   public void controlEvent(CallbackEvent evt) {
     if (_lastEventHash == evt.hashCode()) return;
-
-    if (evt.getAction() == 100) {
+    boolean isMenuClickEvent = evt.getAction() == 100;
+    if (isMenuClickEvent) {
       Controller<?> guiController = evt.getController();
       String guiName = evt.getController().getAddress();
       int selectedMenu = (int) guiController.getValue();
+      Map menuFunction = guiToFunctions.get(getUnitMenuNameFromSelected(guiName));
 
-      System.out.println("> GUI SELECTED: " + guiName + " | " + selectedMenu);
+      System.out.println("> GUI SELECTED: guiName = " + guiName + " | selectedMenu = " + selectedMenu);
+      System.out.println("> menuFunction: " + menuFunction);
 
-      var menuFunction = guiToFunctions.get(getUnitMenuNameFromSelected(guiName));
-      if (menuFunction != null) {
-        Object func = menuFunction.get(selectedMenu);
+      if (menuFunction.values().size() > selectedMenu) {
+        Object func = menuFunction.getOrDefault(selectedMenu, UnitComposed.class);
         if (func instanceof Class) {
-          _unitProcessor.replaceSelectedUnitWithNew((Class) menuFunction.get(selectedMenu));
+          _unitProcessor.replaceSelectedUnitWithNew((Class) func);
         } else {
           _unitProcessor.changeUnitMoveAlgorithm((IMoveAlgorithm) func);
         }

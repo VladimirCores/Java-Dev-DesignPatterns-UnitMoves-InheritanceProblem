@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.Arrays;
 
 public class Medik extends Unit {
-  static public final String GUI_NAME = "Medik Special Mode:";
+  static public final String GUI_NAME = "Medik Modes:";
 
   public Medik(PApplet canvas) {
     super(canvas);

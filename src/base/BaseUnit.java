@@ -10,7 +10,7 @@ import java.awt.*;
 public class BaseUnit implements IUnit {
   public final static float DEFAULT_SIZE = 25f;
 
-  static public final String GUI_NAME = "Unit Modes";
+  static public final String GUI_NAME = "Unit Modes:";
   public Point position = new Point(0, 0);
   protected PApplet _canvas;
   protected DropdownList _gui;
@@ -20,6 +20,8 @@ public class BaseUnit implements IUnit {
 
   private int _color;
   private float _radius;
+
+  public boolean getHasGUI() { return _gui != null; }
 
   public BaseUnit(PApplet canvas) {
     _canvas = canvas;
@@ -78,10 +80,11 @@ public class BaseUnit implements IUnit {
   }
 
   public void removeGUI() {
-    if (_gui != null) {
+    if (getHasGUI()) {
       _gui.removeCallback();
       _gui.remove();
       _gui = null;
+      System.out.println("> BaseUnit: removeGUI");
     }
   }
 
@@ -90,7 +93,8 @@ public class BaseUnit implements IUnit {
   }
 
   public void distroy() {
-    if (_gui != null) removeGUI();
+    System.out.println("> BaseUnit: distroy, hasGui = " + getHasGUI());
+    if (getHasGUI()) removeGUI();
     _canvas = null;
   }
 }

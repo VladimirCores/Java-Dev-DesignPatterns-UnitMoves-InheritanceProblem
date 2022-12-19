@@ -22,6 +22,10 @@ public class CompositionApplication extends BaseApplication implements IUnitProc
     _guiController = new CompositionGUIController(this);
 
     _units.add(new UnitComposed(this));
+    _units.add(new UnitComposed(this));
+    _units.add(new UnitComposed(this));
+    _units.add(new UnitComposed(this));
+    _units.add(new UnitComposed(this));
     _units.forEach(BaseUnit::init);
   }
 
@@ -52,6 +56,7 @@ public class CompositionApplication extends BaseApplication implements IUnitProc
   }
 
   public void replaceUnitWithNew(Unit originalUnit, Unit newUnit) {
+    System.out.println("> replaceUnitWithNew: " + originalUnit + "|" + newUnit);
     SelectUnit(newUnit);
     _units.add(_selectedUnit);
     _units.remove(originalUnit);

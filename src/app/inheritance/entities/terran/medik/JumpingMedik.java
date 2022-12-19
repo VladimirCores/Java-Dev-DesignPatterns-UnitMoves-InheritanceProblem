@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class JumpingMedik extends Medik {
 
-  static public final String GUI_NAME = "JumpingMedik Types:";
+  static public final String GUI_NAME = "Jumping Medik Types:";
   private Boolean _jumping = false;
   private Point _jumpDestinationPosition;
   private float _originalRadius;

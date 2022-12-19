@@ -10,7 +10,7 @@ import processing.core.PApplet;
 import java.awt.*;
 
 public class RunningMarine extends Marine {
-  static public final String GUI_NAME = "RunningMarin Mode:";
+  static public final String GUI_NAME = "Running Marin Mode:";
 
   public RunningMarine(PApplet canvas) {
     super(canvas);

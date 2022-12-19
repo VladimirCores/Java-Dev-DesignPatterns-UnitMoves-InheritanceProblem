@@ -94,6 +94,8 @@ public class InheritanceGUIController implements CallbackListener {
   }
 
   private String getUnitMenuNameFromSelected(String selectedMenuName) {
-    return selectedMenuName.substring(1);
+    String result = selectedMenuName.substring(1);
+    System.out.println("> getUnitMenuNameFromSelected: " + result);
+    return result;
   }
 }

@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class JumpingMarine extends Marine {
 
-  static public final String GUI_NAME = "JumpingMarin Types:";
+  static public final String GUI_NAME = "Jumping Marin Types:";
   private Boolean _jumping = false;
   private Point _jumpDestinationPosition;
   private float _originalRadius;

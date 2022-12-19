@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.Arrays;
 
 public class Marine extends Unit {
-  static public final String GUI_NAME = "Marin Special Mode:";
+  static public final String GUI_NAME = "Marine Mode:";
 
   public Marine(PApplet canvas) {
     super(canvas);

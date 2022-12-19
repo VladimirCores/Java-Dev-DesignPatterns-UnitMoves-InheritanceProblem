@@ -78,14 +78,14 @@ public class BaseApplication extends PApplet {
 
     unit.selectUnit(COLOR_SELECTED);
     _selectedUnit = unit;
-    _unitGUI = _selectedUnit.getGUI();
+    _unitGUI = unit.getGUI();
 
-    if (_unitGUI != null) {
+    if (unit.getHasGUI()) {
       _unitGUI.bringToFront();
       _unitGUI.addCallback(_guiController);
     }
 
-    System.out.println("Unit Selected: radius = " + _selectedUnit.getUnitType() + "; position: " + _selectedUnit.getPosition().toString());
+    System.out.println("Unit Selected: " + _selectedUnit.getUnitType() + "; position: " + _selectedUnit.getPosition().toString());
   }
 
   public void draw() {

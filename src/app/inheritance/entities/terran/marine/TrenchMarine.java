@@ -10,7 +10,7 @@ import processing.core.PApplet;
 import java.awt.*;
 
 public class TrenchMarine extends Marine {
-  static public final String GUI_NAME = "TrenchMarin Mode:";
+  static public final String GUI_NAME = "Trench Marin Mode:";
 
   public TrenchMarine(PApplet canvas) {
     super(canvas);

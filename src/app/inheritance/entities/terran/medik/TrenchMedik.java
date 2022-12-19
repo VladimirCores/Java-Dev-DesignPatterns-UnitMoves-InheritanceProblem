@@ -10,7 +10,7 @@ import processing.core.PApplet;
 import java.awt.*;
 
 public class TrenchMedik extends Medik {
-  static public final String GUI_NAME = "TrenchMedik Mode:";
+  static public final String GUI_NAME = "Trench Medik Mode:";
 
   public TrenchMedik(PApplet canvas) {
     super(canvas);
